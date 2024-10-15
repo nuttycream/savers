@@ -1,0 +1,19 @@
+debug/
+target/*
+.idea/
+
+**/*.rs.bk
+
+# for godot binaries
+!target/debug/libsavers.so
+!target/release/libsavers.so
+!target/debug/savers.dll
+!target/release/savers.dll
+!target/debug/libsavers.dylib
+!target/release/libsavers.dylib
+
+.import/
+export.cfg
+export_presets.cfg
+
+

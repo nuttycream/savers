@@ -1,0 +1,14 @@
+[configuration]
+entry_symbol = "gdext_rust_init"
+compatibility_minimum = 4.1
+reloadable = true
+
+[libraries]
+linux.debug.x86_64 =     "res://addons/savers/target/debug/libsavers.so"
+linux.release.x86_64 =   "res://addons/savers/target/release/libsavers.so"
+windows.debug.x86_64 =   "res://addons/savers/target/debug/savers.dll"
+windows.release.x86_64 = "res://addons/savers/target/release/savers.dll"
+macos.debug =            "res://addons/savers/target/debug/libsavers.dylib"
+macos.release =          "res://addons/savers/target/release/libsavers.dylib"
+macos.debug.arm64 =      "res://addons/savers/target/debug/libsavers.dylib"
+macos.release.arm64 =    "res://addons/savers/target/release/libsavers.dylib"
