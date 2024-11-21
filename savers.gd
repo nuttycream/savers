@@ -1,4 +1,3 @@
-# savers.gd
 @tool
 extends EditorPlugin
 
