@@ -3,11 +3,11 @@ extends Node
 
 # ideally we want this to be set by devs
 const SAVE_PATH := "user://save.json"
-var tracked_nodes: Array[Node] = []
+var save_nodes: Array[Node] = []
 
 func _ready() -> void:
 	await get_tree().process_frame
-	tracked_nodes = get_vars(get_tree().root)
+	save_nodes = get_vars(get_tree().root)
 	load_game()
 
 func get_vars(root: Node) -> Array[Node]:
@@ -27,7 +27,7 @@ func get_vars(root: Node) -> Array[Node]:
 func save() -> void:
 	var save_data := {}
 	
-	for node in tracked_nodes:
+	for node in save_nodes:
 		if not is_instance_valid(node): continue
 		
 		var props := {}
@@ -58,9 +58,9 @@ func load_game() -> void:
 		return
 		
 	var save_data: Dictionary = json.get_data()
-	tracked_nodes = get_vars(get_tree().root)
+	save_nodes = get_vars(get_tree().root)
 	
-	for node in tracked_nodes:
+	for node in save_nodes:
 		var path := str(node.get_path())
 		var data: Dictionary = save_data.get(path, {})
 		
