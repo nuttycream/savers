@@ -1,10 +1,10 @@
 @tool
-extends Panel
+extends Control
 
 var script_list: ItemList
 var fs: EditorFileSystem
 
-func _ready():
+func _ready() -> void:
 	script_list = $VBoxContainer/ScriptList
 	var refresh_btn = $VBoxContainer/RefreshButton
 	refresh_btn.pressed.connect(do_scan)
@@ -33,11 +33,14 @@ func do_scan() -> void:
 			if dir.current_is_dir():
 				scripts.push_back(path)
 			elif name.ends_with(".gd"):
-				var script = load(path)
-				if script:
-					for prop in script.get_script_property_list():
-						if prop["usage"] & PROPERTY_USAGE_EDITOR:
-							script_list.add_item("%s: %s" % [path, prop["name"]])
+				scan_script(path)
 			
 			name = dir.get_next()
 		dir.list_dir_end()
+
+func scan_script(path: String) -> void:
+	var script = load(path)
+	if script:
+		for prop in script.get_script_property_list():
+			if prop["usage"] & PROPERTY_USAGE_EDITOR:
+				script_list.add_item("%s: %s (%s)" % [path, prop["name"], prop["type"]])
