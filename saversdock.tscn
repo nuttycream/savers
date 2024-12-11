@@ -25,3 +25,23 @@ text = "Refresh List"
 layout_mode = 2
 size_flags_vertical = 3
 select_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Ignored Paths:"
+
+[node name="IgnoreList" type="ItemList" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+select_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="AddIgnoreButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add to Ignore"
+
+[node name="RemoveIgnoreButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Remove from Ignore"
